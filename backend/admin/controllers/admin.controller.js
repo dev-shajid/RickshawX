@@ -28,7 +28,7 @@ module.exports.register = async (req, res) => {
 
         res.send({ token, newAdmin });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 }
 
@@ -60,7 +60,7 @@ module.exports.login = async (req, res) => {
 
     } catch (error) {
 
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 
 }
@@ -72,7 +72,7 @@ module.exports.logout = async (req, res) => {
         res.clearCookie('token');
         res.send({ message: 'Admin logged out successfully' });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 }
 
@@ -80,7 +80,7 @@ module.exports.profile = async (req, res) => {
     try {
         res.send(req.admin);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 }
 

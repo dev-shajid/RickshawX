@@ -1,12 +1,12 @@
 import axios from "axios"
 
-const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api",
+const axiosInstance = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000",
   timeout: 10000,
 })
 
 // Request interceptor
-api.interceptors.request.use(
+axiosInstance.interceptors.request.use(
   (config) => {
     // Add auth token if available
     const token = localStorage.getItem("auth_token")
@@ -21,7 +21,7 @@ api.interceptors.request.use(
 )
 
 // Response interceptor
-api.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
@@ -33,4 +33,4 @@ api.interceptors.response.use(
   },
 )
 
-export default api
+export default axiosInstance

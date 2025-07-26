@@ -64,7 +64,7 @@ export default function RiderDashboard() {
                 <div className="text-center py-8 text-muted-foreground">No new requests at the moment</div>
               ) : (
                 requests.map((request) => (
-                  <Card key={request.id} className="border-orange-200 dark:border-orange-800">
+                  <Card key={request.id} className="border-orange-200 dark:border-orange-400">
                     <CardContent className="p-4 space-y-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
@@ -124,7 +124,7 @@ export default function RiderDashboard() {
                 <div className="text-center py-8 text-muted-foreground">No accepted rides yet</div>
               ) : (
                 acceptedRides.map((ride) => (
-                  <Card key={ride.id} className="border-green-200 dark:border-green-800">
+                  <Card key={ride.id} className="border-green-200 dark:border-green-400">
                     <CardContent className="p-4 space-y-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">

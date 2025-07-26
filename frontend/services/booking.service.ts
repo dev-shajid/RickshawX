@@ -51,7 +51,7 @@ const fetchUserBookings = async (userId: string): Promise<{ success: boolean; da
 }
 
 const cancelBooking = async (bookingId: string): Promise<{ success: boolean; message: string }> => {
-  await new Promise((resolve) => setTimeout(resolve, 500))
+  await new Promise((resolve) => setTimeout(resolve, 400))
   mockBookings = mockBookings.filter((booking) => booking._id !== bookingId)
   return {
     success: true,

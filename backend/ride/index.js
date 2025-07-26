@@ -19,6 +19,6 @@ app.use(cookieParser())
 app.use('/', rideRoutes)
 
 
-app.listen(3003, () => {
-    console.log('🛺 Ride service is running on port 3003');
+app.listen(4003, () => {
+    console.log('🛺 Ride service is running on port 4003');
 });

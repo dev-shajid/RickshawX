@@ -8,6 +8,7 @@ const rideEventEmitter = new EventEmitter();
 
 module.exports.register = async (req, res) => {
     try {
+        console.log(req.body);
         const { name, email, password } = req.body;
         const user = await User.findOne({ email });
 
@@ -25,10 +26,11 @@ module.exports.register = async (req, res) => {
         res.cookie('token', token);
 
         delete newUser._doc.password;
+        newcaptain._doc.role = 'captain';
 
-        res.send({ token, newUser });
+        res.send({ token, user: newUser });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 }
 
@@ -53,6 +55,7 @@ module.exports.login = async (req, res) => {
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         delete user._doc.password;
+        user._doc.role = 'user';
 
         res.cookie('token', token);
 
@@ -60,7 +63,7 @@ module.exports.login = async (req, res) => {
 
     } catch (error) {
 
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 
 }
@@ -72,7 +75,7 @@ module.exports.logout = async (req, res) => {
         res.clearCookie('token');
         res.send({ message: 'User logged out successfully' });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 }
 
@@ -80,7 +83,7 @@ module.exports.profile = async (req, res) => {
     try {
         res.send(req.user);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 }
 

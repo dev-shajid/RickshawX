@@ -231,7 +231,7 @@ export default function UserDashboard() {
                     </div>
                   ) : (
                     availableRiders?.data.map((rider) => (
-                      <Card key={rider.id} className="transition-all hover:shadow-md border-l-4 border-l-green-500">
+                      <Card key={rider.id} className="transition-all hover:shadow-md border-l-4 border-l-green-400">
                         <CardContent className="p-4">
                           <div className="flex items-center space-x-4">
                             <Avatar className="h-12 w-12">
@@ -287,7 +287,7 @@ export default function UserDashboard() {
                   <Clock className="h-5 w-5" />
                   {isWaitingForRider ? "Finding Rider..." : "Current Booking"}
                 </span>
-                <Badge variant="default" className="bg-orange-500">
+                <Badge variant="default" className="bg-orange-400">
                   {isWaitingForRider ? "searching" : currentBooking?.status}
                 </Badge>
               </CardTitle>

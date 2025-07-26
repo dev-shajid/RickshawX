@@ -9,9 +9,9 @@ module.exports.getAllLocations = async (req, res) => {
             data: locations
         });
     } catch (error) {
-        res.status(500).json({ 
+        res.status(400).json({
             success: false,
-            message: error.message 
+            message: error.message
         });
     }
 };
@@ -25,9 +25,9 @@ module.exports.getActiveLocations = async (req, res) => {
             data: locations
         });
     } catch (error) {
-        res.status(500).json({ 
+        res.status(400).json({
             success: false,
-            message: error.message 
+            message: error.message
         });
     }
 };
@@ -36,9 +36,9 @@ module.exports.getLocationById = async (req, res) => {
     try {
         const location = await Location.findById(req.params.id);
         if (!location) {
-            return res.status(404).json({ 
+            return res.status(404).json({
                 success: false,
-                message: 'Location not found' 
+                message: 'Location not found'
             });
         }
         res.json({
@@ -47,9 +47,9 @@ module.exports.getLocationById = async (req, res) => {
             data: location
         });
     } catch (error) {
-        res.status(500).json({ 
+        res.status(400).json({
             success: false,
-            message: error.message 
+            message: error.message
         });
     }
 };

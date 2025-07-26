@@ -28,7 +28,7 @@ module.exports.createRide = async (req, res) => {
 
     } catch (error) {
         console.error('Error creating ride:', error);
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 }
 

@@ -369,7 +369,7 @@ const mockRoutePriceData: RoutePriceResponse = {
 
 // Simulate API call with delay
 const fetchRoutePrices = async (): Promise<RoutePriceResponse> => {
-  await new Promise((resolve) => setTimeout(resolve, 500)) // Simulate network delay
+  await new Promise((resolve) => setTimeout(resolve, 400)) // Simulate network delay
   return mockRoutePriceData
 }
 

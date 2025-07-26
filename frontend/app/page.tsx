@@ -41,10 +41,10 @@ export default function LandingPage() {
 
             <div className="relative">
               <Image
-                src="/placeholder.svg?height=500&width=600"
+                src="/placeholder.svg?height=400&width=600"
                 alt="RickshawX App Interface"
                 width={600}
-                height={500}
+                height={400}
                 className="rounded-2xl shadow-2xl"
               />
             </div>

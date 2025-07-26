@@ -19,6 +19,6 @@ app.use(cookieParser())
 app.use('/', captainRoutes)
 
 
-app.listen(3002, () => {
-    console.log('🧑‍✈️ Captain service is running on port 3002');
+app.listen(4002, () => {
+    console.log('🧑‍✈️ Captain service is running on port 4002');
 });

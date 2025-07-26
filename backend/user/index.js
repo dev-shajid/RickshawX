@@ -19,6 +19,6 @@ app.use(cookieParser())
 app.use('/', userRoutes)
 
 
-app.listen(3001, () => {
-    console.log('💁‍♂️ User service is running on port 3001');
+app.listen(4001, () => {
+    console.log('💁‍♂️ User service is running on port 4001');
 });

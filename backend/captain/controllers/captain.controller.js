@@ -25,10 +25,10 @@ module.exports.register = async (req, res) => {
         res.cookie('token', token);
 
         delete newcaptain._doc.password;
-
-        res.send({ token, newcaptain });
+        newcaptain._doc.role = 'captain';
+        res.send({ token, captain: newcaptain });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 }
 
@@ -53,6 +53,7 @@ module.exports.login = async (req, res) => {
         const token = jwt.sign({ id: captain._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         delete captain._doc.password;
+        newcaptain._doc.role = 'captain';
 
         res.cookie('token', token);
 
@@ -60,7 +61,7 @@ module.exports.login = async (req, res) => {
 
     } catch (error) {
 
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 
 }
@@ -72,7 +73,7 @@ module.exports.logout = async (req, res) => {
         res.clearCookie('token');
         res.send({ message: 'captain logged out successfully' });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 }
 
@@ -81,7 +82,7 @@ module.exports.profile = async (req, res) => {
         res.send(req.captain);
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 }
 
@@ -93,7 +94,7 @@ module.exports.toggleAvailability = async (req, res) => {
         res.send(captain);
     } catch (error) {
 
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 }
 

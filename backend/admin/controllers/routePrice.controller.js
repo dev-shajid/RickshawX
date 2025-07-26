@@ -12,9 +12,9 @@ module.exports.getAllRoutePrices = async (req, res) => {
             data: routePrices
         });
     } catch (error) {
-        res.status(500).json({ 
+        res.status(400).json({
             success: false,
-            message: error.message 
+            message: error.message
         });
     }
 };
@@ -24,7 +24,7 @@ module.exports.getRoutePrice = async (req, res) => {
         const { from, to } = req.query;
 
         if (!from || !to) {
-            return res.status(400).json({ 
+            return res.status(400).json({
                 success: false,
                 message: 'Both from and to location IDs are required',
                 example: '/routes/price?from=locationId1&to=locationId2'
@@ -38,7 +38,7 @@ module.exports.getRoutePrice = async (req, res) => {
         }).populate('fromLocation toLocation', 'name description coordinates');
 
         if (!routePrice) {
-            return res.status(404).json({ 
+            return res.status(404).json({
                 success: false,
                 message: 'Route price not found for this location pair',
                 data: { from, to }
@@ -52,9 +52,9 @@ module.exports.getRoutePrice = async (req, res) => {
         });
 
     } catch (error) {
-        res.status(500).json({ 
+        res.status(400).json({
             success: false,
-            message: error.message 
+            message: error.message
         });
     }
 };

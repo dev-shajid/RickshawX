@@ -19,6 +19,6 @@ app.use(cookieParser())
 app.use('/', adminRoutes)
 
 
-app.listen(3004, () => {
-    console.log('💁‍♂️ Admin service is running on port 3004');
+app.listen(4004, () => {
+    console.log('💁‍♂️ Admin service is running on port 4004');
 });
