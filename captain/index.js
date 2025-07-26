@@ -1,0 +1,24 @@
+require('dotenv').config()
+const cookieParser = require('cookie-parser')
+const express = require('express')
+
+const app = express()
+const connect = require('./db/db')
+connect()
+const captainRoutes = require('./routes/captain.route')
+const rabbitMq = require('./service/rabbit')
+
+rabbitMq.connect()
+
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
+
+
+app.use('/', captainRoutes)
+
+
+app.listen(3002, () => {
+    console.log('🧑‍✈️ Captain service is running on port 3002');
+});
