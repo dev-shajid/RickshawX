@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const adminController = require('../controllers/admin.controller');
-const authMiddleware = require('../middleware/auth.middleware');
+const locationController = require('../controllers/location.controller');
+const routePriceController = require('../controllers/routePrice.controller');
 
+// Public location APIs - for user and ride services
+router.get('/locations', locationController.getAllLocations);
+router.get('/locations/active', locationController.getActiveLocations);
+router.get('/locations/:id', locationController.getLocationById);
 
-router.post('/register', adminController.register);
-router.post('/login', adminController.login);
-router.get('/logout', adminController.logout);
-router.get('/profile', authMiddleware.adminAuth, adminController.profile);
-router.get('/accepted-ride', authMiddleware.adminAuth, adminController.acceptedRide);
+// Public route price APIs - for user and ride services
+router.get('/routes/prices', routePriceController.getAllRoutePrices);
+router.get('/routes/price', routePriceController.getRoutePrice);
 
 module.exports = router;
