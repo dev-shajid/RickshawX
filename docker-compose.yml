@@ -15,9 +15,8 @@ services:
       - rickshawx-network
     healthcheck:
       test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
-      interval: 30s
+      interval: 2m        # Check every 2 minutes instead of 30s
       timeout: 10s
-      retries: 3
 
   rabbitmq:
     image: rabbitmq:3.12-management
