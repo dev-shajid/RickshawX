@@ -18,6 +18,17 @@ app.use(cookieParser())
 
 app.use('/', captainRoutes)
 
+// Add to backend/user/index.js
+app.get('/health', (req, res) => {
+    res.json({
+        success: true,
+        service: 'User Service',
+        status: 'healthy',
+        timestamp: new Date().toISOString(),
+        port: process.env.PORT || 4001
+    })
+})
+
 
 app.listen(4002, () => {
     console.log('🧑‍✈️ Captain service is running on port 4002');
